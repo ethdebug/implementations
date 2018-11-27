@@ -18,7 +18,7 @@ function buildTree (scopeId) {
 function resolveLocals(step, scopeId, sourcelocation, scopes) {
  var variableDeclaration = getVariableDeclaration(sourcelocation)
  if (variableDeclaration && notAlreadySeen) {
-  scopes[scopeId].locals[variableDeclaration.name] = { name, stackDepth, type, sourceLocation }
+    scopes[scopeId].locals[variableDeclaration.name] = { name, stackDepth, type, sourceLocation }
  }
  var fnDefinition = getFunctionDefinition(sourcelocation)
  if (fnDefinition && justSteppedIn) {
@@ -28,3 +28,9 @@ function resolveLocals(step, scopeId, sourcelocation, scopes) {
  }
 }
 ```
+
+Issues are:
+
+ - in case of complex types, it is not obvious when the value is fully initiated
+ - getting in a new scope (well this algo can be improved as well :) )
+ 
